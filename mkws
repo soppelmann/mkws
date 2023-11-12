@@ -1,0 +1,58 @@
+#!/bin/bash
+PATH=./bin:$PATH
+
+usage() {
+	>&2 printf "usage: %s url [path]\\n" "$(basename "$0")"
+	exit 1
+}
+
+test $# -lt 1 && usage
+
+export SRC="${2:-.}"
+export SHARE="${MKWSTHEMEDIR:-${SRC}/share}"
+export LANG="${LANG:-en_US.UTF-8}"
+
+if ! test -f "${SRC}"/index.upphtml
+then
+	>&2 printf "no index.upphtml file found\\n"
+	exit 1
+fi
+
+function process_folder() {
+    local folder="$1"
+    echo "Processing folder: $folder"
+    # Exclude folders named "share as they have .upphtml in them"
+    if [[ "$(basename "$folder")" == "share" ]]; then
+        echo "Excluded folder: $folder"
+        return
+    fi
+
+    # Check if "share" folder exists in the current directory
+    if [ -d "${folder}/share" ]; then
+        SHARE="${folder}/share"
+    fi
+
+    for file in "${folder}"/*.upphtml; do
+        if [ -f "$file" ]; then
+            echo "Making $(basename "${file%.upphtml}".html)"
+            output_file="$(basename "${file%.upphtml}".html)"
+            pp "${SHARE}"/l.upphtml "$file" "${folder}" > "${folder}/${output_file}"
+        fi
+    done
+
+    # Iterate over subfolders only if they exist
+    shopt -s nullglob
+    for subfolder in "${folder}"/*; do
+        if [ -d "$subfolder" ]; then
+            process_folder "$subfolder"
+        fi
+    done
+    shopt -u nullglob
+}
+
+process_folder "${SRC}"
+
+# sitemap.uppxml needs to be slightly modified now that
+# we deal with subdirectories
+echo "Making sitemap.xml"
+pp "${SHARE}"/sitemap.uppxml "$1" > sitemap.xml

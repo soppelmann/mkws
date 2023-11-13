@@ -1,0 +1,32 @@
+Options +Indexes
+#IndexOptions FancyIndexing
+#IndexOptions FoldersFirst
+#IndexOptions IgnoreCase
+#IndexOptions NameWidth=*
+
+<Files *>
+    Order Allow,Deny
+    Allow from all
+    Satisfy Any
+</Files>
+
+
+
+# MORE INDEX INFORMATION
+IndexOptions +FoldersFirst
+IndexOptions +XHTML
+IndexOptions +HTMLTable
+# RewriteRule ^/icons/ 
+## OPTIONAL
+#IndexOptions +FancyIndexing
+#IndexOptions +SuppressRules
+IndexIgnore ..
+# HEADER FILE
+HeaderName header.html
+ 
+# FOOTER FILE
+ReadmeName footer.html
+
+
+# IGNORE BOTH FOOTER AND HEADER
+IndexIgnore header.html footer.html .htaccess

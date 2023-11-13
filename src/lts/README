@@ -1,0 +1,36 @@
+# `lts`
+
+file time data
+
+The
+`lts`
+set of utilities print file time data to standard output
+similar to
+[`stat`](https://man.openbsd.org/stat).
+They have been broken down due to portability considerations.
+
+## Utilities
+The utilities are:
+* `lat` - last access time
+* `lmt` - last modification time
+* `lct` - last change time
+## Arguments
+
+They all accept an optional `-f` argument that allow setting the format
+of the displayed time in
+[`strftime`](
+https://pubs.opengroup.org/onlinepubs/9699919799/functions/strftime.html)
+format.
+
+## Example
+
+	$ lmt README
+	Fri Sep  4 17:53:46 EEST 2020 README
+
+## Parsing
+
+The default format is `%a %b %e %H:%M:%S %Z %Y`, it can be isolated
+from the filename by piping to `cut -d' ' -f1-7`:
+
+	$ lmt README | cut -d' ' -f1-7
+	Fri Sep  4 17:56:42 EEST 2020

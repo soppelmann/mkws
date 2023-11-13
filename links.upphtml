@@ -1,0 +1,14 @@
+<p>
+
+<h4>
+Last updated:
+#!
+date +"%d %b %Y"
+#!
+</h4>
+
+
+#!
+lowdown --html-no-skiphtml --html-no-escapehtml links.md
+#!
+</p>

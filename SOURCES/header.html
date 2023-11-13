@@ -1,0 +1,70 @@
+	<head>
+		<!-- TITLE ATTRIBUTE https://github.com/nicoverbruggen/apache_theme/blob/master/.htaccess -->
+		<title>Files</title>
+		<!-- MOBILE DEVICE SUPPORT -->
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<!-- INLINE STYLE (NO MESS OF HIDING ADDITIONAL FILES IN .htaccess) -->
+
+		<style type="text/css">
+		  body { background-color: white; color: black; font-family: sans-serif; width: 70%; margin: auto; display: table-cell; }
+		  hr { border: 0; border-bottom: 1px dashed; }
+		  @media (prefers-color-scheme: dark) {
+		      body { background-color: #1E1F21; color: #EEEFF1; }
+		      a { color: #BAD7FF; }
+		  }
+		</style>
+
+		<style type="text/css">
+
+		tr, td, th
+		{
+			padding: 5px 10px;
+			text-align: left;
+		}
+		table{
+			font-size: 0.9em;
+			width: 100%;
+		}
+		/* LINKS */
+		a{
+			color: #CCC;
+		}
+		a:visited{
+			color: #37A;
+		}
+		/* PARAGRAPHS */
+		p{
+			font-size: 0.75em;
+			margin-top: 15px;
+			margin-bottom: 15px;
+		}
+		/* ALWAYS HIDE FILE DESCRIPTIONS (5th element as table header + data) */
+		th:nth-child(5){
+				display: none;
+		}
+		td:nth-child(5){
+				display: none;
+		}
+
+		/* MEDIA QUERIES FOR MOBILE */
+		@media screen and (min-width: 320px) and (max-width: 768px){
+			body{
+				width: 90%;
+			}
+			td, th{
+				font-size: 1.0em;
+			}
+			p{
+				font-size: 0.9em;
+			}
+		}
+		/******************************
+		INLINE STYLES END HERE
+		*****************************/
+		</style>
+	</head>
+<body>
+  
+		<h1>Världens bästa hemsida</h1>
+		<!-- IF YOU WANT TO STYLE GENERATED CONTENT, USE DIV #generated -->
+		<div id="generated">

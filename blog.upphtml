@@ -1,0 +1,25 @@
+<p>
+We want to list all files *.html in the /blog directory and provide hyperlinks to them
+together with titles and abstracts.
+Sort everything by date, year,month maybe?
+This is left as an exercise for the reader.
+
+<ul>
+#!
+FILES=$(find ./blog -type f -name '*.md')
+for f in $FILES
+do
+  # Uncomment this line to choose a specific line to use as the post title
+  # NAME=$(sed -e 's/<[^>]*>//g' $f | head -n 162 | tail -1)
+  # This line makes it so the first line is the (link) title of the post
+  NAME=$(head -1 $f)
+  LINK=$(echo "$f" | sed 's/\.md$//')
+  # take action on each file. $f store current file name
+  #!
+    <li>  <a href="$LINK"> $NAME </a></li>
+  #!
+
+done
+#!
+</ul>
+</p>

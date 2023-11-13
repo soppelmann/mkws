@@ -11,6 +11,7 @@ test $# -lt 1 && usage
 export SRC="${2:-.}"
 export SHARE="${MKWSTHEMEDIR:-${SRC}/share}"
 export LANG="${LANG:-en_US.UTF-8}"
+STATIC="$1"
 
 if ! test -f "${SRC}"/index.upphtml
 then
@@ -22,12 +23,13 @@ function process_folder() {
     local folder="$1"
     echo "Processing folder: $folder"
     # Exclude folders named "share as they have .upphtml in them"
+    #if [[ "$(basename "$folder")" == "share" || "$(basename "$folder")" == "SOURCES"  ]]; then
     if [[ "$(basename "$folder")" == "share" ]]; then
         echo "Excluded folder: $folder"
         return
     fi
 
-    # Check if "share" folder exists in the current directory
+        # Check if "share" folder exists in the current directory
     if [ -d "${folder}/share" ]; then
         SHARE="${folder}/share"
     fi
@@ -36,7 +38,7 @@ function process_folder() {
         if [ -f "$file" ]; then
             echo "Making $(basename "${file%.upphtml}".html)"
             output_file="$(basename "${file%.upphtml}".html)"
-            pp "${SHARE}"/l.upphtml "$file" "${folder}" > "${folder}/${output_file}"
+            pp "${SHARE}"/l.upphtml "$file" "${folder}" "$STATIC" > "${folder}/${output_file}"
         fi
     done
 
@@ -50,6 +52,7 @@ function process_folder() {
     shopt -u nullglob
 }
 
+# Start the search from the source directory
 process_folder "${SRC}"
 
 # sitemap.uppxml needs to be slightly modified now that

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang=${LANG%%_*}>
+
+<head>
+
+<title>Your awesome site</title>
+
+<meta charset=${LANG##*.}>
+<meta name=viewport content='width=device-width, initial-scale=1'>
+
+<link rel=stylesheet
+href=s.css?$(lmt -f '%Y-%m-%dT%H:%M:%SZ' s.css | cut -d' ' -f1)>
+
+
+
+</head>
+<body>
+<header>
+    <a href="/"><img src="$3/SOURCES/cdance.gif" width="15%" alt="dancingC"></a>
+    <nav>
+        <ul>
+                <a href=$3/>Home</a>
+                <a href=$3/blog.html>Blog</a>
+                <a href=$3/links.html>Links</a>
+                <a href=$3/SOURCES/>Sources</a>
+        </ul>
+            <hr>
+    </nav>
+</header>
+<style>
+#!
+  pp "$SHARE"/s.uppcss
+#!
+</style>
+
+#!
+pp "$1" "$2"
+#!
+
+</body>
+
+</html>

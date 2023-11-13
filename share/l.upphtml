@@ -8,6 +8,12 @@
 <meta charset=${LANG##*.}>
 <meta name=viewport content='width=device-width, initial-scale=1'>
 
+<style>
+#!
+  pp "$SHARE"/s.uppcss
+#!
+</style>
+
 
 </head>
 <body>
@@ -23,11 +29,6 @@
             <hr>
     </nav>
 </header>
-<style>
-#!
-  pp "$SHARE"/s.uppcss
-#!
-</style>
 
 #!
 pp "$1" "$2"

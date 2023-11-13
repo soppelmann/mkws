@@ -8,10 +8,6 @@
 <meta charset=${LANG##*.}>
 <meta name=viewport content='width=device-width, initial-scale=1'>
 
-<link rel=stylesheet
-href=s.css?$(lmt -f '%Y-%m-%dT%H:%M:%SZ' s.css | cut -d' ' -f1)>
-
-
 
 </head>
 <body>

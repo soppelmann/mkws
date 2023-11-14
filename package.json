@@ -1,0 +1,8 @@
+{
+  "name": "mkws-examples",
+  "description": "Example site",
+  "version": "0.0.0",
+  "private": true,
+  "repository": "soppelmann/examples",
+  "license": "Inherited"
+}
